@@ -5,3 +5,58 @@
 5. postman initial config
 6. email credential config
 7. declare model properties
+
+project Order Summary:
+1. config
+2. model
+3. controllers
+4. middlewares
+5. routes
+6. utility
+7. app.js
+
+
+Here is an explanation of the typical purpose of each folder and the `app.js` file in a backend API project:
+
+### 1. **config**
+- **Purpose**: This folder usually contains configuration files for the project. It can include settings for the database connection, environment variables, server configuration, and other global settings.
+- **Examples**: 
+  - `database.js`: Contains database connection settings (e.g., URL, credentials).
+  - `env.js`: Reads and sets environment variables (e.g., from a `.env` file).
+
+### 2. **controllers**
+- **Purpose**: Controllers contain functions that handle incoming HTTP requests and provide responses. They manage the logic that should be executed for each route.
+- **Examples**: 
+  - `taskController.js`: Handles task-related operations like creating, reading, updating, and deleting tasks.
+
+### 3. **middlewares**
+- **Purpose**: Middleware functions are functions that execute during the request-response cycle before the final request handler. They are used for tasks such as authentication, logging, error handling, and request parsing.
+- **Examples**: 
+  - `authMiddleware.js`: Checks if a user is authenticated.
+  - `errorHandler.js`: Catches and processes errors.
+
+### 4. **model**
+- **Purpose**: This folder contains the data models for the project, defining the structure and schema of the data used in the application. Models interact with the database to perform CRUD (Create, Read, Update, Delete) operations.
+- **Examples**: 
+  - `taskModel.js`: Defines the schema and methods for task entities (e.g., using Mongoose for MongoDB).
+
+### 5. **utility**
+- **Purpose**: Contains utility functions or helper methods that can be used across different parts of the application. These are often generic functions that don't fit into other specific folders.
+- **Examples**: 
+  - `helpers.js`: General-purpose functions (e.g., formatting dates, generating random IDs).
+  - `validators.js`: Functions to validate input data.
+
+### 6. **routes**
+- **Purpose**: This folder defines the routing for the application. Routes determine which controller functions are called based on the HTTP request method and endpoint.
+- **Examples**: 
+  - `taskRoutes.js`: Maps endpoints (e.g., `/tasks`) to corresponding controller functions.
+
+### 7. **app.js**
+- **Purpose**: This is usually the main entry point of the application. It sets up the Express server, initializes middleware, connects to the database, and registers routes. It might also start the server by listening to a specific port.
+- **Key Tasks**:
+  - Importing required modules.
+  - Configuring middleware.
+  - Setting up routes.
+  - Starting the server.
+
+This structure helps keep the project modular, organized, and maintainable, making it easier to scale and collaborate with others.
