@@ -44,8 +44,16 @@ export const TaskListByStatus = async (req, res) => {
   }
 };
 
+// delete task
 export const DeleteTask = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let id = req.params.id;
+    let user_id = req.headers["user_id"];
+    await TasksModel.deleteOne({ _id: id, user_id: user_id });
+    return res.json({ status: "success", message: "Task deleted" });
+  } catch (e) {
+    return res.json({ status: "fail", message: e.toString() });
+  }
 };
 
 export const CountTask = async (req, res) => {
