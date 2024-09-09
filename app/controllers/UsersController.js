@@ -1,5 +1,17 @@
+import Users from "../model/UsersModel.js";
+
+// user registration
 export const Registration = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let reqBody = req.body;
+    await Users.create(reqBody);
+    return res.json({
+      status: "success",
+      Message: "User registered successfully",
+    });
+  } catch (e) {
+    return res.json({ status: "fail", Message: e.toString() });
+  }
 };
 
 export const Login = async (req, res) => {

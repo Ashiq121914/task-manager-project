@@ -1,7 +1,7 @@
-export const PORT = 5050;
+export const PORT = 4000;
 export const DATABASE =
   "mongodb+srv://test:test1234@cluster0.n1ko8.mongodb.net/Mern6TaskApi";
-export const JWT_KEY = "";
+export const JWT_KEY = "ABC12341241234";
 export const JWT_EXPIRE_TIME = 30 * 24 * 60 * 60;
 
 export const EMAIL_HOST = "mail.teamrabbil.com";

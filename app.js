@@ -42,5 +42,5 @@ mongoose
 app.use("/api", router);
 
 app.listen(PORT, () => {
-  console.log("port running on 5050");
+  console.log("port running on 4000");
 });
