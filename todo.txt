@@ -14,7 +14,7 @@
 open postman > any route after login > headers > key : token, value : {{TOKEN}}.
 
 4. profile update, also need authmiddlware in the api, usersController, also need to give token in the headers in postman.
-5. EmailVerify: for this we need email utility and usersController
+5. EmailVerify: for this we need email utility and usersController, token doesn't need in the postman headers.
 6. codeVerify: usersController.
 
 //tasks

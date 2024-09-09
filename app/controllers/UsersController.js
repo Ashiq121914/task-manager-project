@@ -1,5 +1,6 @@
 import Users from "../model/UsersModel.js";
 import { TokenEncode } from "../utility/tokenUtility.js";
+import SendEmail from "../utility/emailUtility.js";
 
 // user registration
 export const Registration = async (req, res) => {
@@ -64,8 +65,31 @@ export const ProfileUpdate = async (req, res) => {
   }
 };
 
+// email verification
 export const EmailVerify = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let email = req.params.email;
+    let data = await Users.findOne({ email: email });
+    if (data == null) {
+      return res.json({ status: "fail", Message: "User email does not exist" });
+    } else {
+      // Send OTP To Email
+      let code = Math.floor(100000 + Math.random() * 900000);
+      let EmailTo = data["email"];
+      let EmailText = "Your Code is " + code;
+      let EmailSubject = "Task Manager Verification Code";
+      await SendEmail(EmailTo, EmailText, EmailSubject);
+
+      // Update OTP In User
+      await Users.updateOne({ email: email }, { otp: code });
+      return res.json({
+        status: "success",
+        Message: "Verification successfully,check email",
+      });
+    }
+  } catch (e) {
+    return res.json({ status: "fail", Message: e.toString() });
+  }
 };
 
 export const CodeVerify = async (req, res) => {
