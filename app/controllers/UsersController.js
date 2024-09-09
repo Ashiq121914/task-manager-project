@@ -37,8 +37,19 @@ export const Login = async (req, res) => {
   }
 };
 
+// user profile details
 export const ProfileDetails = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let user_id = req.headers["user_id"];
+    let data = await Users.findOne({ _id: user_id });
+    return res.json({
+      status: "success",
+      message: "User profile successfully",
+      data: data,
+    });
+  } catch (e) {
+    return res.json({ status: "fail", Message: e.toString() });
+  }
 };
 
 export const ProfileUpdate = async (req, res) => {
