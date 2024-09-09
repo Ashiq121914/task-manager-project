@@ -32,8 +32,16 @@ export const UpdateTaskStatus = async (req, res) => {
   }
 };
 
+// task list by status
 export const TaskListByStatus = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let user_id = req.headers["user_id"];
+    let status = req.params.status;
+    let data = await TasksModel.find({ user_id: user_id, status: status });
+    return res.json({ status: "success", message: "Task List", data: data });
+  } catch (e) {
+    return res.json({ status: "fail", message: e.toString() });
+  }
 };
 
 export const DeleteTask = async (req, res) => {

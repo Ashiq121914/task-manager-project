@@ -21,7 +21,11 @@ router.get(
   AuthMiddleware,
   TaskController.UpdateTaskStatus
 );
-router.get("/TaskListByStatus", TaskController.TaskListByStatus);
+router.get(
+  "/TaskListByStatus/:status",
+  AuthMiddleware,
+  TaskController.TaskListByStatus
+);
 router.get("/DeleteTask", TaskController.DeleteTask);
 router.get("/CountTask", TaskController.CountTask);
 

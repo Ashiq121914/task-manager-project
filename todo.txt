@@ -21,10 +21,10 @@ open postman > any route after login > headers > key : token, value : {{TOKEN}}.
 
 //tasks
 1. CreateTask: just in taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task), also use of token in the postman header.
-2. updateTaskStatus: taskcontroller, also use of token in the postman header.
-3. TaskListByStatus: taskcontroller, also use of token in the postman header
-4. DeleteTask: taskcontroller, also use of token in the postman header.
-5. CountTask: taskcontroller, also use of token in the postman header
+2. updateTaskStatus: taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task),, also use of token in the postman header.
+3. TaskListByStatus:  taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task),, also use of token in the postman header.
+4. DeleteTask:  taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task),, also use of token in the postman header.
+5. CountTask:  taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task),, also use of token in the postman header.
 
 project Order Summary:
 1. config
