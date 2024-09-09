@@ -113,6 +113,30 @@ export const CodeVerify = async (req, res) => {
   }
 };
 
+// reset password
 export const ResetPassword = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let reqBody = req.body;
+    let data = await Users.findOne({
+      email: reqBody["email"],
+      otp: reqBody["otp"],
+    });
+    if (data == null) {
+      return res.json({ status: "fail", Message: "Wrong Verification Code" });
+    } else {
+      await Users.updateOne(
+        { email: reqBody["email"] },
+        {
+          otp: "0",
+          password: reqBody["password"],
+        }
+      );
+      return res.json({
+        status: "success",
+        Message: "Password Reset successfully",
+      });
+    }
+  } catch (e) {
+    return res.json({ status: "fail", Message: e.toString() });
+  }
 };
