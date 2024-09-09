@@ -9,7 +9,7 @@ import AuthMiddleware from "../app/middlewares/AuthMiddleware.js";
 router.post("/Registration", UserController.Registration);
 router.post("/login", UserController.Login);
 router.get("/ProfileDetails", AuthMiddleware, UserController.ProfileDetails);
-router.post("/ProfileUpdate", UserController.ProfileUpdate);
+router.post("/ProfileUpdate", AuthMiddleware, UserController.ProfileUpdate);
 router.post("/EmailVerify", UserController.EmailVerify);
 router.post("/CodeVerify", UserController.CodeVerify);
 router.post("/ResetPassword", UserController.ResetPassword);

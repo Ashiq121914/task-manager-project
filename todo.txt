@@ -13,7 +13,7 @@
 3. profile details, for this authMiddleware and tokenDecode. also when we  login and get a token. we will save this token in the postman > task manager rest api > variables > {{TOKEN}}. then we will use it in the headers of the all the route from here.
 open postman > any route after login > headers > key : token, value : {{TOKEN}}.
 
-4. profile update, also need authmiddlware in the api, usersController
+4. profile update, also need authmiddlware in the api, usersController, also need to give token in the headers in postman.
 5. EmailVerify: for this we need email utility and usersController
 6. codeVerify: usersController.
 
