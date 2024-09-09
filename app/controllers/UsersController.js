@@ -1,4 +1,5 @@
 import Users from "../model/UsersModel.js";
+import { TokenEncode } from "../utility/tokenUtility.js";
 
 // user registration
 export const Registration = async (req, res) => {
@@ -14,8 +15,26 @@ export const Registration = async (req, res) => {
   }
 };
 
+// user login
 export const Login = async (req, res) => {
-  return res.json({ status: "success" });
+  try {
+    let reqBody = req.body;
+    let data = await Users.findOne(reqBody);
+
+    if (data == null) {
+      return res.json({ status: "fail", Message: "User not found" });
+    } else {
+      // Login Success
+      let token = TokenEncode(data["email"], data["_id"]);
+      return res.json({
+        status: "success",
+        Message: "User login successfully",
+        data: { token: token },
+      });
+    }
+  } catch (e) {
+    return res.json({ status: "fail", Message: e.toString() });
+  }
 };
 
 export const ProfileDetails = async (req, res) => {
