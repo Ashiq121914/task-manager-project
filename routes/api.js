@@ -27,6 +27,6 @@ router.get(
   TaskController.TaskListByStatus
 );
 router.get("/DeleteTask/:id", AuthMiddleware, TaskController.DeleteTask);
-router.get("/CountTask", TaskController.CountTask);
+router.get("/CountTask", AuthMiddleware, TaskController.CountTask);
 
 export default router;
