@@ -20,7 +20,7 @@ open postman > any route after login > headers > key : token, value : {{TOKEN}}.
 7. resetPassword: usersController. token doesn't need in the postman headers.
 
 //tasks
-1. CreateTask: just in taskcontroller, also use of token in the postman header.
+1. CreateTask: just in taskcontroller,authmiddlware in the api(becuase user need to be logged in to create task), also use of token in the postman header.
 2. updateTaskStatus: taskcontroller, also use of token in the postman header.
 3. TaskListByStatus: taskcontroller, also use of token in the postman header
 4. DeleteTask: taskcontroller, also use of token in the postman header.
